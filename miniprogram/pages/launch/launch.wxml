@@ -1,0 +1,7 @@
+<!-- 启动页 · 极简字标 -->
+<view class="launch">
+  <view class="mark">
+    <text class="mark-t">校易</text>
+    <text class="mark-s">校园闲置 · 当面交易</text>
+  </view>
+</view>

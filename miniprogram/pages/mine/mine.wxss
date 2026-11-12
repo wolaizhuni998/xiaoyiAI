@@ -1,0 +1,110 @@
+/* ===== 我的 · 资料行 + 入口列表 ===== */
+.page {
+  min-height: 100vh;
+}
+
+.body {
+  padding: 8rpx 40rpx 0;
+}
+
+.pad {
+  height: 220rpx;
+}
+
+.head {
+  padding: 28rpx 0 24rpx;
+}
+
+/* 资料行：白卡 */
+.profile {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 24rpx;
+  background-color: #ffffff;
+  border-radius: 22rpx;
+}
+
+.profile:active {
+  opacity: 0.55;
+}
+
+.avatar,
+.avatar-img {
+  flex: none;
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 50%;
+  background-color: #f4f4f6;
+}
+
+.avatar {
+  color: #6e6e73;
+  font-size: 40rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-img {
+  display: block;
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+  margin-left: 24rpx;
+}
+
+.name {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.sub {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #8e8e93;
+}
+
+/* 入口列表：白卡 */
+.menu {
+  margin-top: 24rpx;
+  padding: 0 24rpx;
+  background-color: #ffffff;
+  border-radius: 22rpx;
+  overflow: hidden;
+}
+
+.menu-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx 0;
+  border-bottom: 1rpx solid #f0f0f2;
+}
+
+.menu-row:last-child {
+  border-bottom: none;
+}
+
+.menu-row:active {
+  opacity: 0.55;
+}
+
+.m-ch {
+  font-size: 29rpx;
+  color: #1d1d1f;
+}
+
+.m-right {
+  display: flex;
+  align-items: center;
+}
+
+.m-note {
+  margin-right: 16rpx;
+  font-size: 23rpx;
+  color: #8e8e93;
+}

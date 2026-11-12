@@ -1,0 +1,40 @@
+<!-- 我的：资料行 + 入口列表 -->
+<nav-bar />
+<view class="page tone-{{tone}}">
+  <view class="body">
+    <view class="head dev d1">
+      <view class="t-h1">我的</view>
+    </view>
+
+    <view class="profile dev d2" bindtap="editProfile">
+      <image wx:if="{{avatar}}" class="avatar-img" src="{{avatar}}" mode="aspectFill" />
+      <view wx:else class="avatar">{{nickCh}}</view>
+      <view class="info">
+        <view class="name">{{nick || '未登录同学'}}</view>
+        <view class="sub">{{phone || '点击完善个人资料'}}</view>
+      </view>
+      <view class="chev"></view>
+    </view>
+
+    <view class="menu dev d3">
+      <view
+        wx:for="{{menus}}"
+        wx:key="id"
+        class="menu-row"
+        data-id="{{item.id}}"
+        data-ch="{{item.ch}}"
+        bindtap="open"
+      >
+        <text class="m-ch">{{item.ch}}</text>
+        <view class="m-right">
+          <text class="m-note" wx:if="{{item.note}}">{{item.note}}</text>
+          <view class="chev"></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="pad"></view>
+  </view>
+
+  <ink-tabbar active="mine" bind:go="onTab" />
+</view>

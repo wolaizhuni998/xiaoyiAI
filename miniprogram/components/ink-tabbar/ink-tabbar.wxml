@@ -1,0 +1,19 @@
+<view class="tabs tone-{{tone}} {{liquid ? 'liquid' : ''}} {{snap ? 'snap' : ''}} {{blobOn ? '' : 'noblob'}}"
+      bind:touchstart="onStart"
+      catch:touchmove="onMove"
+      bind:touchend="onEnd"
+      bind:touchcancel="onEnd">
+
+  <!-- 液态水珠：静止时缩在选中项下面，长按胀大后跟手，被拉长/压扁 -->
+  <view class="blob-clip">
+    <view class="blob core" style="transform: translate3d({{bx}}px, 0, 0) scale({{sx}}, {{sy}})"></view>
+  </view>
+
+  <view class="tab {{curKey === item.key ? 'on' : ''}} {{item.key === 'publish' ? 'mid' : ''}} {{hoverIdx === index ? 'near' : ''}}"
+        wx:for="{{items}}" wx:for-index="index" wx:key="key" data-url="{{item.url}}" bindtap="onTap">
+    <view class="tico">
+      <view class="ico-svg ico-{{item.key}}"></view>
+    </view>
+    <text class="tlab">{{item.label}}</text>
+  </view>
+</view>

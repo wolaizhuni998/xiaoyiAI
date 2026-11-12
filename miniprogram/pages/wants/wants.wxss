@@ -1,0 +1,158 @@
+/* ===== 求物品 · 发布意向 + 单列需求池 ===== */
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.body {
+  padding: 8rpx 40rpx 0;
+}
+
+.pad {
+  height: 220rpx;
+}
+
+.head {
+  padding: 28rpx 0 32rpx;
+}
+
+.head-s {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #8e8e93;
+}
+
+/* 发布意向 */
+/* 发布区：白卡 */
+.compose {
+  padding: 28rpx 24rpx;
+  background-color: #ffffff;
+  border-radius: 22rpx;
+}
+
+.c-in {
+  height: 88rpx;
+  padding: 0 24rpx;
+  background-color: #f4f4f6;
+  border-radius: 16rpx;
+  font-size: 29rpx;
+  color: #1d1d1f;
+}
+
+.c-cats {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20rpx;
+}
+
+.c-chip {
+  padding: 8rpx 22rpx;
+  margin: 0 14rpx 14rpx 0;
+  border-radius: 999rpx;
+  font-size: 23rpx;
+  color: #6e6e73;
+  background-color: #f4f4f6;
+}
+
+.c-chip.on {
+  color: #ffffff;
+  background-color: var(--tone, #007aff);
+}
+
+.c-act {
+  display: flex;
+  align-items: center;
+  margin-top: 12rpx;
+}
+
+.c-btn {
+  flex: 1;
+  height: 88rpx;
+  border-radius: 44rpx;
+  background-color: var(--tone, #007aff);
+  color: #ffffff;
+  font-size: 29rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.c-btn:active {
+  opacity: 0.82;
+}
+
+.c-cancel {
+  flex: none;
+  margin-left: 28rpx;
+  font-size: 27rpx;
+  color: #8e8e93;
+}
+
+.c-cancel:active {
+  opacity: 0.55;
+}
+
+/* 需求池 */
+.sec-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 40rpx 0 8rpx;
+}
+
+.sec-n {
+  font-size: 23rpx;
+  color: #8e8e93;
+}
+
+/* 需求池：白卡 */
+.list {
+  padding: 0 24rpx;
+  background-color: #ffffff;
+  border-radius: 22rpx;
+  overflow: hidden;
+}
+
+.w-row {
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid #f0f0f2;
+}
+
+.w-row:last-child {
+  border-bottom: none;
+}
+
+.w-row:active {
+  opacity: 0.55;
+}
+
+.w-title {
+  font-size: 29rpx;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #1d1d1f;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.w-meta {
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  color: #8e8e93;
+}
+
+.w-time {
+  margin-top: 6rpx;
+  font-size: 23rpx;
+  color: #b0b0b6;
+}
+
+.empty {
+  padding: 120rpx 0;
+  text-align: center;
+  font-size: 26rpx;
+  color: #8e8e93;
+}

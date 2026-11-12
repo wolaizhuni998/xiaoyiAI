@@ -1,0 +1,26 @@
+<!-- 消息：会话列表 -->
+<nav-bar />
+<view class="page tone-{{tone}}">
+  <view class="body">
+    <view class="head dev d1">
+      <view class="t-h1">消息</view>
+      <view class="head-s">同学之间的对话</view>
+    </view>
+
+    <view class="list dev d2">
+      <view class="m-row" wx:for="{{sessions}}" wx:key="id" data-d="{{item}}" bindtap="open">
+        <view class="m-main">
+          <view class="m-top">
+            <text class="m-title">{{item.title}}</text>
+            <text class="m-time">{{item.time}}</text>
+          </view>
+          <view class="m-brief">{{item.brief}}</view>
+        </view>
+      </view>
+      <view class="empty" wx:if="{{!sessions.length}}">还没有对话</view>
+    </view>
+    <view class="pad"></view>
+  </view>
+
+  <ink-tabbar id="tabs" current="/pages/msg/msg" bind:tab="onTab" bind:go="onTab" />
+</view>

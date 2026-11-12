@@ -1,0 +1,110 @@
+/* ===== 设置 · 主题色 + 数据模式 ===== */
+.page {
+  min-height: 100vh;
+}
+
+.body {
+  padding: 8rpx 40rpx 0;
+}
+
+.head {
+  padding: 28rpx 0 32rpx;
+}
+
+.head-s {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #8e8e93;
+}
+
+/* 主题色 */
+/* 主题色：白卡 */
+.sec {
+  padding: 28rpx 24rpx;
+  background-color: #ffffff;
+  border-radius: 22rpx;
+}
+
+.sec-t {
+  font-size: 29rpx;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  margin-top: 24rpx;
+}
+
+.dot-wrap {
+  padding: 6rpx;
+  margin-right: 10rpx;
+}
+
+.dot {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+}
+
+.dot.on {
+  box-shadow: 0 0 0 2rpx #ffffff, 0 0 0 4rpx #1d1d1f;
+}
+
+.sec-d {
+  margin-top: 18rpx;
+  font-size: 23rpx;
+  color: #8e8e93;
+}
+
+/* 行：整组一张白卡 */
+.group {
+  margin-top: 22rpx;
+  padding: 0 24rpx;
+  background-color: #ffffff;
+  border-radius: 22rpx;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #f0f0f2;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.rl {
+  flex: 1;
+  min-width: 0;
+  margin-right: 20rpx;
+}
+
+.r-t {
+  font-size: 29rpx;
+  color: #1d1d1f;
+}
+
+.r-d {
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  line-height: 1.5;
+  color: #8e8e93;
+}
+
+.r-v {
+  flex: none;
+  font-size: 25rpx;
+  color: #8e8e93;
+}
+
+.foot {
+  padding: 48rpx 0 64rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #b0b0b6;
+}

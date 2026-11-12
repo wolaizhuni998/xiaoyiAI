@@ -1,0 +1,210 @@
+/* ===== 校易 · 克制风全局设计系统 =====
+   规则：纯色底 + 白色内容块 + 灰阶文字，不用渐变、不用彩色发光。
+   底色不再是死白：每个主题给一个纯色 --bg，换调色盘整页立刻变。
+   毛玻璃只留在悬浮元素（顶栏、底部导航、聊天输入栏、详情底栏）。
+------------------------------------------------------------------------- */
+page {
+  min-height: 100vh;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  background-color: #f2f2f7;
+  /* 默认值；页面根节点挂 tone-* 覆盖 */
+  --tone: #007aff;
+  --bg: #f2f2f7;
+}
+
+.page {
+  box-sizing: border-box;
+  /* 纯色底：橡皮筋区域也用它，换主题不会露出白边 */
+  background-color: var(--bg, #f2f2f7);
+  min-height: 100vh;
+}
+
+/* ===== 主题：每个主题一对变量 =====
+   --tone 强调色（按钮 / 选中态 / 可议价）
+   --bg   页面纯色底（调色盘一换，整页底色跟着换）===== */
+.tone-graphite { --tone: #1d1d1f; --bg: #f2f2f7; }
+.tone-blue     { --tone: #007aff; --bg: #edf3ff; }
+.tone-teal     { --tone: #30b0c7; --bg: #eaf6f8; }
+.tone-green    { --tone: #34c759; --bg: #edf7f0; }
+.tone-yellow   { --tone: #ffcc00; --bg: #fbf6e7; }
+.tone-orange   { --tone: #ff9500; --bg: #fdf2e8; }
+.tone-red      { --tone: #ff3b30; --bg: #fceeed; }
+.tone-pink     { --tone: #ff2d55; --bg: #fceef3; }
+.tone-purple   { --tone: #af52de; --bg: #f6effa; }
+.tone-indigo   { --tone: #5856d6; --bg: #efeffc; }
+
+/* ===== 字阶（全站只用这四档，避免五套标题写法）===== */
+/* 页面大标题 */
+.t-h1 {
+  font-size: 52rpx;
+  font-weight: 700;
+  letter-spacing: -1rpx;
+  line-height: 1.2;
+  color: #1d1d1f;
+}
+/* 区块标题 */
+.t-h2 {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+/* 正文 */
+.t-body {
+  font-size: 29rpx;
+  line-height: 1.6;
+  color: #1d1d1f;
+}
+/* 说明 / 元信息 */
+.t-note {
+  font-size: 24rpx;
+  color: #8e8e93;
+}
+
+/* 强调色文字 */
+.t-tone { color: var(--tone, #007aff); }
+
+/* ===== 兼容层：旧样式类名统一收成「白底 + 细线」===== */
+.liquid-card {
+  position: relative;
+  background-color: #ffffff;
+  border: 1rpx solid #e5e5ea;
+  border-radius: 20rpx;
+  box-shadow: none;
+}
+
+.liquid-pill {
+  position: relative;
+  background-color: #ffffff;
+  border: 1rpx solid #e5e5ea;
+  border-radius: 999rpx;
+  box-shadow: none;
+}
+
+.liquid-btn {
+  background-color: var(--tone, #007aff);
+  color: #ffffff;
+  border-radius: 24rpx;
+  font-weight: 600;
+  box-shadow: none;
+  transition: opacity 0.2s ease;
+}
+.liquid-btn:active {
+  opacity: 0.82;
+}
+
+/* ===== 液态玻璃配方说明 =====
+   悬浮玻璃共四处，配方一致但各写一份：
+   - components/nav-bar/nav-bar.wxss（顶栏）
+   - components/ink-tabbar/ink-tabbar.wxss（底部导航）
+   - pages/chat/chat.wxss 的 .bar（悬浮输入栏）
+   - pages/detail/detail.wxss 的 .bar-wrap（详情底栏）
+   要点：几乎不着色的半透明白 + 大半径 backdrop blur 采样背后内容 +
+   多层 inset 阴影堆透镜厚度 + 左右缘红/蓝极细描边模拟色散 + 顶部受光面。
+   小程序 WXSS 插不进 inline <svg>，liquid-glass-react 的 feDisplacementMap
+   位移折射走不通，复刻的是「折射之后的样子」。
+   安卓不支持 backdrop-filter 时靠半透明白 + 边缘光学兜底。 */
+
+/* 列表分隔线：左侧缩进对齐文字、右侧顶边（iOS 分组列表） */
+.hr {
+  height: 1rpx;
+  background-color: #f0f0f2;
+}
+
+/* 入场：只做淡入 + 极小位移，不做缩放和弹性
+   fill-mode 用 backwards，避免动画结束后残留 transform 形成新的 backdrop 参考系 */
+.dev { animation: reveal 0.32s ease-out backwards; }
+@keyframes reveal {
+  0% { opacity: 0; transform: translateY(8rpx); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.d1 { animation-delay: 0.03s; }
+.d2 { animation-delay: 0.06s; }
+.d3 { animation-delay: 0.09s; }
+.d4 { animation-delay: 0.12s; }
+.d5 { animation-delay: 0.15s; }
+.d6 { animation-delay: 0.18s; }
+.d7 { animation-delay: 0.21s; }
+
+/* ===== 线条图标（全站统一：24 视框、1.5 描边、圆头端点、灰 #6E6E73）
+   放在全局，首页 / 详情 / 发布共用一套，避免每个页面各画一份 ===== */
+.ic {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* 数码 */
+.ic-digital {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%236E6E73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><line x1="10.5" y1="18.6" x2="13.5" y2="18.6"/></svg>');
+}
+
+/* 书籍教材 */
+.ic-book {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%236E6E73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5h6a3 3 0 0 1 3 3V20a3 3 0 0 0-3-3H3z"/><path d="M21 4.5h-6a3 3 0 0 0-3 3V20a3 3 0 0 1 3-3h6z"/></svg>');
+}
+
+/* 生活用品 */
+.ic-life {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%236E6E73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 18h5"/><path d="M10.5 21h3"/><path d="M12 3a6 6 0 0 0-3.4 10.9c.5.4.9 1 .9 1.6V18h5v-2.5c0-.6.4-1.2.9-1.6A6 6 0 0 0 12 3z"/></svg>');
+}
+
+/* 服饰鞋包 */
+.ic-cloth {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%236E6E73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.6 3 4 5.3l1.7 4.4 2.6-.9V21h7.4V8.8l2.6.9L20 5.3 15.4 3a3.4 3.4 0 0 1-6.8 0z"/></svg>');
+}
+
+/* 运动器材 */
+.ic-sport {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%236E6E73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3v18"/><path d="M5.7 5.7a12 12 0 0 0 0 12.6"/><path d="M18.3 5.7a12 12 0 0 1 0 12.6"/></svg>');
+}
+
+/* 兜底 */
+.ic-other {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%236E6E73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="2.5"/></svg>');
+}
+
+/* 收藏（空心 / 实心） */
+.ic-heart {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%231D1D1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21.2l7.8-7.8 1-1.1a5.5 5.5 0 0 0 0-7.7z"/></svg>');
+}
+.ic-heart.on {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%231D1D1F" stroke="%231D1D1F" stroke-width="1.5" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21.2l7.8-7.8 1-1.1a5.5 5.5 0 0 0 0-7.7z"/></svg>');
+}
+
+/* 定位针 */
+.ic-pin {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%238E8E93" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>');
+}
+
+/* 加号 / 关闭（替代 ＋ × 字符） */
+.ic-plus {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%238E8E93" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>');
+}
+.ic-close {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23FFFFFF" stroke-width="1.8" stroke-linecap="round"><line x1="7" y1="7" x2="17" y2="17"/><line x1="17" y1="7" x2="7" y2="17"/></svg>');
+}
+
+/* 右箭头：用两条边线画，避免各页用不同字体的 › 导致基线不一 */
+.chev {
+  width: 14rpx;
+  height: 14rpx;
+  border-right: 2rpx solid #c7c7cc;
+  border-bottom: 2rpx solid #c7c7cc;
+  transform: rotate(-45deg);
+  flex: none;
+}
+
+/* 按压反馈：只降透明度，不缩放 */
+.press-active {
+  transition: opacity 0.2s ease;
+}
+.press-active:active {
+  opacity: 0.6;
+}
+
+/* 阅读节奏与系统动效偏好 */
+.t-h1{font-size:46rpx;line-height:1.35;letter-spacing:0}.t-note{line-height:1.65}button::after{border:none}button{font-size:26rpx;border-radius:20rpx}input,textarea{caret-color:var(--tone,#007aff)}
+@media (prefers-reduced-motion: reduce){.dev{animation:none!important;opacity:1!important;transform:none!important}}

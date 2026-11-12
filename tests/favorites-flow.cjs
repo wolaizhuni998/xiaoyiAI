@@ -1,0 +1,3 @@
+const assert=require('node:assert/strict');const memory={};global.wx={getStorageSync:k=>memory[k],setStorageSync:(k,v)=>memory[k]=v};
+const api=require('../miniprogram/utils/api.js');const fav=require('../miniprogram/utils/favorites.js');
+assert.throws(()=>fav.toggle({id:'a'}));api.setToken('test');api.saveProfile({phone:'13800000001'});assert.equal(fav.toggle({id:'a',title:'测试教材'}),true);assert.equal(fav.has('a'),true);assert.equal(fav.all()[0].title,'测试教材');api.saveProfile({phone:'13800000002'});assert.equal(fav.all().length,0);api.saveProfile({phone:'13800000001'});assert.equal(fav.has('a'),true);assert.equal(fav.toggle({id:'a'}),false);assert.equal(fav.all().length,0);console.log('PASS: 未登录拦截、收藏保存、账号隔离、切回账号恢复、取消收藏');

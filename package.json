@@ -1,0 +1,12 @@
+{
+  "name": "xiaoyi-ai",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "node tests/run.cjs",
+    "start:ai": "node --env-file=server/.env server/index.cjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

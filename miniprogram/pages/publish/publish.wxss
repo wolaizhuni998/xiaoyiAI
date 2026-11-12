@@ -1,0 +1,263 @@
+/* ===== 发布闲置 · 分组列表表单 ===== */
+.page {
+  min-height: 100vh;
+}
+
+.body {
+  padding: 8rpx 40rpx 0;
+}
+
+.pad {
+  height: 220rpx;
+}
+
+.head {
+  padding: 28rpx 0 32rpx;
+}
+
+.head-s {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #8e8e93;
+}
+
+/* 表单：整组一张白卡，行间细线 */
+.form {
+  padding: 0 24rpx;
+  background-color: #ffffff;
+  border-radius: 22rpx;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #f0f0f2;
+}
+
+.row.last {
+  border-bottom: none;
+}
+
+.label {
+  flex: none;
+  width: 168rpx;
+  font-size: 29rpx;
+  color: #1d1d1f;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  font-size: 29rpx;
+  color: #1d1d1f;
+}
+
+.ph {
+  color: #b0b0b6;
+  font-size: 27rpx;
+}
+
+.pk {
+  flex: 1;
+  min-width: 0;
+}
+
+.pick {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14rpx;
+  font-size: 29rpx;
+  color: #1d1d1f;
+}
+
+.pick.is-ph {
+  color: #b0b0b6;
+}
+
+.price-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+}
+
+.cny {
+  font-size: 29rpx;
+  color: #1d1d1f;
+}
+
+.price-in {
+  font-size: 29rpx;
+  color: #1d1d1f;
+}
+
+/* ===== 照片 ===== */
+.block {
+  margin-top: 44rpx;
+}
+
+.block-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.block-t {
+  font-size: 29rpx;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.count {
+  font-size: 23rpx;
+  color: #8e8e93;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ph-item {
+  position: relative;
+  width: 200rpx;
+  height: 200rpx;
+  margin: 0 20rpx 20rpx 0;
+  border-radius: 12rpx;
+  overflow: hidden;
+  background-color: #f4f4f6;
+}
+
+.ph-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ph-del {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44rpx;
+  height: 44rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ph-del-ic {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.ph-add {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+  border: 1rpx dashed #d6d6db;
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ph-add:active {
+  opacity: 0.55;
+}
+
+.ph-add-ic {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.ph-add-t {
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: #8e8e93;
+}
+
+/* ===== 拍照填表：一行文字入口，不做彩色徽章 ===== */
+.ai {
+  display: flex;
+  align-items: center;
+  padding: 26rpx 0;
+  margin-top: 8rpx;
+  border-top: 1rpx solid #f0f0f2;
+  border-bottom: 1rpx solid #f0f0f2;
+}
+
+.ai:active {
+  opacity: 0.6;
+}
+
+.ai-main {
+  flex: 1;
+  min-width: 0;
+  padding-right: 20rpx;
+}
+
+.ai-t {
+  font-size: 29rpx;
+  color: #1d1d1f;
+}
+
+.ai-d {
+  margin-top: 6rpx;
+  font-size: 23rpx;
+  line-height: 1.5;
+  color: #8e8e93;
+}
+
+.ai-act {
+  flex: none;
+  font-size: 27rpx;
+  color: var(--tone, #007aff);
+}
+
+/* ===== 按钮 ===== */
+.acts {
+  margin-top: 48rpx;
+}
+
+.btn-pri {
+  height: 96rpx;
+  border-radius: 48rpx;
+  background-color: var(--tone, #007aff);
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-pri:active {
+  opacity: 0.82;
+}
+
+.btn-pri.busy {
+  opacity: 0.6;
+}
+
+.btn-txt {
+  margin-top: 20rpx;
+  height: 88rpx;
+  font-size: 28rpx;
+  color: #8e8e93;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-txt:active {
+  opacity: 0.55;
+}
+
+/* 分组表单与足够的触控空间 */
+.body{padding:12rpx 32rpx 0}.head{padding:28rpx 0}.head-s{color:#737b87;line-height:1.6}.form{padding:0 24rpx;margin-top:20rpx;border-radius:26rpx}.row{min-height:64rpx;padding:24rpx 0}.label{width:176rpx;font-size:27rpx}.input,.pick{font-size:27rpx}.ph,.pick.is-ph{color:#79818b;font-size:25rpx}.block{margin-top:24rpx;padding:24rpx;background:#fff;border-radius:26rpx}.block textarea{font-size:27rpx;line-height:1.7;box-sizing:border-box;min-height:200rpx}.grid{gap:14rpx}.ph-item,.ph-add{width:calc((100% - 28rpx)/3);height:174rpx;margin:0;border-radius:18rpx;box-sizing:border-box}.ph-del{width:56rpx;height:56rpx}.ai{margin-top:24rpx;padding:28rpx 24rpx;background:#fff;border:1rpx solid rgba(30,50,70,.06);border-radius:26rpx}.ai-t{font-size:28rpx;font-weight:600}.ai-d{color:#737b87;line-height:1.7}.ai-act{font-size:25rpx}.acts{margin-top:28rpx}.btn-pri{border-radius:24rpx}.publish-hint{padding:20rpx 4rpx;color:#737b87;font-size:23rpx;line-height:1.7}.market-entry{margin:16rpx 32rpx 0;padding:22rpx 24rpx;border-radius:22rpx;background:#fff;color:#58616e;font-size:25rpx;line-height:1.6}.manage-entry{padding:22rpx 4rpx;color:var(--tone);font-size:26rpx}

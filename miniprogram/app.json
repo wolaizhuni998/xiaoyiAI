@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/launch/launch",
+    "pages/home/home",
+    "pages/wants/wants",
+    "pages/wants-ok/wants-ok",
+    "pages/publish/publish",
+    "pages/msg/msg",
+    "pages/chat/chat",
+    "pages/detail/detail",
+    "pages/mine/mine",
+    "pages/settings/settings",
+    "pages/login/login",
+    "pages/profile/profile",
+    "pages/my-listings/my-listings",
+    "pages/favorites/favorites"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "校易AI",
+    "backgroundColor": "#ffffff"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于定位你所在的校园，展示附近同学的闲置物品"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
+  "sitemapLocation": "sitemap.json"
+}

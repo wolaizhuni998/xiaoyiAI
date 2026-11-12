@@ -1,0 +1,82 @@
+/* ===== 消息 · 会话列表 ===== */
+.page {
+  min-height: 100vh;
+}
+
+.body {
+  padding: 8rpx 40rpx 0;
+}
+
+.pad {
+  height: 220rpx;
+}
+
+.head {
+  padding: 28rpx 0 32rpx;
+}
+
+.head-s {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #8e8e93;
+}
+
+/* 会话列表：白卡 */
+.list {
+  padding: 0 24rpx;
+  background-color: #ffffff;
+  border-radius: 22rpx;
+  overflow: hidden;
+}
+
+.m-row {
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid #f0f0f2;
+}
+
+.m-row:last-child {
+  border-bottom: none;
+}
+
+.m-row:active {
+  opacity: 0.55;
+}
+
+.m-main {
+  min-width: 0;
+}
+
+.m-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.m-title {
+  font-size: 29rpx;
+  font-weight: 500;
+  color: #1d1d1f;
+}
+
+.m-time {
+  flex: none;
+  margin-left: 20rpx;
+  font-size: 23rpx;
+  color: #b0b0b6;
+}
+
+.m-brief {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #8e8e93;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.empty {
+  padding: 120rpx 0;
+  text-align: center;
+  font-size: 26rpx;
+  color: #8e8e93;
+}

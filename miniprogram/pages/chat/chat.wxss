@@ -1,0 +1,112 @@
+/* ===== 聊天 · 消息流 + 悬浮输入栏 ===== */
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 24rpx 32rpx calc(env(safe-area-inset-bottom) + 24rpx);
+  box-sizing: border-box;
+}
+
+/* 消息流 */
+.thread {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 32rpx;
+}
+
+.bub-row {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.bub-row.me {
+  justify-content: flex-end;
+}
+
+.bub {
+  max-width: 74%;
+  padding: 18rpx 24rpx;
+  border-radius: 24rpx;
+  word-break: break-word;
+}
+
+.bub.theirs {
+  /* 纯色底上白气泡才分得开 */
+  background-color: #ffffff;
+  border-bottom-left-radius: 8rpx;
+}
+
+.bub.mine {
+  background-color: var(--tone, #007aff);
+  border-bottom-right-radius: 8rpx;
+}
+
+.bub-t {
+  font-size: 29rpx;
+  line-height: 1.5;
+  color: #1d1d1f;
+}
+
+.bub.mine .bub-t {
+  color: #ffffff;
+}
+
+/* 底部悬浮输入栏：液态玻璃（和顶栏、底部导航同一套配方） */
+.bar-wrap {
+  position: sticky;
+  bottom: 0;
+  padding-top: 12rpx;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  padding: 8rpx 10rpx 8rpx 28rpx;
+  border-radius: 44rpx;
+  background-color: rgba(255, 255, 255, 0.45);
+  -webkit-backdrop-filter: saturate(180%) blur(24px) brightness(1.06);
+  backdrop-filter: saturate(180%) blur(24px) brightness(1.06);
+  box-shadow:
+    0 8rpx 28rpx rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.42),
+    inset 1px 0 0 rgba(255, 92, 122, 0.12),
+    inset -1px 0 0 rgba(92, 160, 255, 0.14);
+}
+
+.bar-in {
+  flex: 1;
+  min-width: 0;
+  height: 68rpx;
+  font-size: 28rpx;
+  color: #1d1d1f;
+}
+
+.bar-send {
+  flex: none;
+  margin-left: 12rpx;
+  height: 68rpx;
+  padding: 0 28rpx;
+  border-radius: 34rpx;
+  font-size: 26rpx;
+  color: #b0b0b6;
+  background-color: #f2f2f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bar-send.on {
+  color: #ffffff;
+  background-color: var(--tone, #007aff);
+}
+
+.bar-send.on:active {
+  opacity: 0.82;
+}

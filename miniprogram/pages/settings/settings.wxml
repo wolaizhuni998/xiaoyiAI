@@ -1,0 +1,41 @@
+<!-- 设置：主题色 + 数据模式 -->
+<nav-bar />
+<view class="page tone-{{tone}}">
+  <view class="body">
+    <view class="head dev d1">
+      <view class="t-h1">设置</view>
+      <view class="head-s">校易 · 演示版</view>
+    </view>
+
+    <!-- 主题色 -->
+    <view class="sec dev d2">
+      <view class="sec-t">主题色</view>
+      <view class="dots">
+        <view class="dot-wrap" wx:for="{{tones}}" wx:key="id" data-id="{{item.id}}" bindtap="pickTone">
+          <view class="dot {{tone === item.id ? 'on' : ''}}" style="background-color: {{item.color}}"></view>
+        </view>
+      </view>
+      <view class="sec-d">切换后页面底色、按钮和选中态一起变</view>
+    </view>
+
+    <!-- 数据模式 -->
+    <view class="group">
+      <view class="row dev d3">
+        <view class="rl">
+          <view class="r-t">数据模式</view>
+          <view class="r-d">开启为演示数据（mock），关闭走真实后端接口</view>
+        </view>
+        <switch checked="{{mock}}" color="{{toneColor}}" bindchange="onMock" />
+      </view>
+
+      <view class="row dev d4">
+        <view class="rl">
+          <view class="r-t">版本</view>
+        </view>
+        <view class="r-v">演示版 v1.0</view>
+      </view>
+    </view>
+
+    <view class="foot dev d5">校易 · 校园闲置 · 当面交易</view>
+  </view>
+</view>

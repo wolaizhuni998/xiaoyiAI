@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict');
+const memory={}; global.wx={getStorageSync:k=>memory[k],setStorageSync:(k,v)=>memory[k]=v};
+const store=require('../miniprogram/utils/listings.js');const market=require('../miniprogram/utils/market.js');const catalog=require('../miniprogram/utils/catalog.js');
+market.save('砚湖大学（演示）','主校区');
+const product=store.publish({title:'买家测试耳机',desc:'型号 ABC，使用一年，左侧有划痕，含充电线。',price:'80',imgs:['fixture.jpg'],cat:'数码',cond:'八成新',place:'图书馆',...market.current()},{phone:'13800000001',nick:'卖家测试同学',demoVerified:true});
+assert.equal(catalog.detail(product.id),null);product.aiReport={decision:'pass',imageReview:{kind:'real',complete:true}};store.review(product.id,true);
+assert.equal(catalog.search(catalog.list(),'划痕')[0].id,product.id);
+assert.equal(catalog.detail(product.id).desc,product.desc);
+assert.equal(catalog.detail(product.id).sellerName,'卖家测试同学');
+market.save('砚湖大学（演示）','东校区');assert.equal(catalog.detail(product.id),null);assert.equal(catalog.search(catalog.list(),'耳机').length,0);
+let page;global.Page=p=>page=p;require('../miniprogram/pages/detail/detail.js');
+const instance={...page,data:{...page.data},setData(d){Object.assign(this.data,d);}};
+market.save('砚湖大学（演示）','主校区');instance.onLoad({id:product.id,title:'篡改标题',price:'1'});assert.equal(instance.data.item.title,product.title);assert.equal(instance.data.priceText,'¥80');assert.equal(instance.data.desc,product.desc);
+market.save('砚湖大学（演示）','东校区');instance.onShow();assert.equal(instance.data.unavailable,true);
+console.log('PASS: 描述关键词搜索、待审隐藏、同集市详情、卖家信息、跨校区拦截、详情不信任URL价格标题、切换校区后失效');

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ink-tabbar": "/components/ink-tabbar/ink-tabbar",
+    "nav-bar": "/components/nav-bar/nav-bar"
+  }
+}

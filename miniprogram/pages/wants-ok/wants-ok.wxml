@@ -1,0 +1,38 @@
+<!-- 求购已发布：回执 -->
+<nav-bar />
+<view class="page tone-{{tone}}">
+  <view class="body">
+    <view class="hero dev d1">
+      <view class="ok-ring">
+        <view class="ok-check"></view>
+      </view>
+    </view>
+
+    <view class="t1 dev d2">求购已发布</view>
+    <view class="t2 dev d2">{{item.n ? '同学发布同类物品时会来联系你，当前有 ' + item.n + ' 件同类在售' : '同学发布同类物品时会来联系你'}}</view>
+
+    <view class="receipt dev d3">
+      <view class="r-row">
+        <text class="k">意向物品</text>
+        <text class="v">{{item.name}}</text>
+      </view>
+      <view class="r-row">
+        <text class="k">预算区间</text>
+        <text class="v">{{item.budget}}</text>
+      </view>
+      <view class="r-row">
+        <text class="k">目标成色</text>
+        <text class="v">{{item.cond}}</text>
+      </view>
+      <view class="r-row last">
+        <text class="k">在售同类</text>
+        <text class="v">{{item.n}} 件</text>
+      </view>
+    </view>
+
+    <view class="acts dev d4">
+      <view class="btn-pri" bindtap="goResult">看看在售的同类</view>
+      <view class="btn-txt" bindtap="again">继续发布求购</view>
+    </view>
+  </view>
+</view>

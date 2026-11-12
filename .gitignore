@@ -1,0 +1,19 @@
+# 微信开发者工具：本地个人配置（含 appid 相关缓存、本机路径），不随仓库分发
+project.private.config.json
+project.config.json.bak
+
+# 依赖与构建产物
+node_modules/
+miniprogram_npm/
+dist/
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+
+.env
+.env.*
+!.env.example

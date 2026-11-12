@@ -1,0 +1,121 @@
+/* ===== 求购已发布 · 回执 ===== */
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.body {
+  padding: 96rpx 40rpx 64rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 成功记号：细线圆 + 对勾（不用 ✓ 字符） */
+.hero {
+  margin-bottom: 8rpx;
+}
+
+.ok-ring {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+  border: 3rpx solid var(--tone, #007aff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ok-check {
+  width: 44rpx;
+  height: 22rpx;
+  border-left: 4rpx solid var(--tone, #007aff);
+  border-bottom: 4rpx solid var(--tone, #007aff);
+  transform: rotate(-45deg) translate(2rpx, -4rpx);
+}
+
+.t1 {
+  margin-top: 36rpx;
+  font-size: 44rpx;
+  font-weight: 700;
+  letter-spacing: -0.5rpx;
+  color: #1d1d1f;
+}
+
+.t2 {
+  margin-top: 12rpx;
+  width: 82%;
+  text-align: center;
+  font-size: 24rpx;
+  line-height: 1.6;
+  color: #8e8e93;
+}
+
+/* 回执：细线分组，无徽章 */
+.receipt {
+  width: 100%;
+  margin-top: 64rpx;
+  border-top: 1rpx solid #f0f0f2;
+}
+
+.r-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid #f0f0f2;
+}
+
+.r-row.last {
+  border-bottom: 1rpx solid #f0f0f2;
+}
+
+.k {
+  flex: none;
+  font-size: 27rpx;
+  color: #8e8e93;
+}
+
+.v {
+  flex: 1;
+  min-width: 0;
+  margin-left: 24rpx;
+  text-align: right;
+  font-size: 27rpx;
+  color: #1d1d1f;
+}
+
+.acts {
+  width: 100%;
+  margin-top: 72rpx;
+}
+
+.btn-pri {
+  height: 96rpx;
+  border-radius: 48rpx;
+  background-color: var(--tone, #007aff);
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-pri:active {
+  opacity: 0.82;
+}
+
+.btn-txt {
+  margin-top: 20rpx;
+  height: 88rpx;
+  font-size: 28rpx;
+  color: #8e8e93;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-txt:active {
+  opacity: 0.55;
+}

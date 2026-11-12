@@ -1,0 +1,93 @@
+/* ===== 个人资料 · 头像 + 昵称 ===== */
+.page {
+  min-height: 100vh;
+  padding: 40rpx 48rpx 0;
+  box-sizing: border-box;
+}
+
+.av-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 24rpx 0 48rpx;
+}
+
+.av {
+  width: 168rpx;
+  height: 168rpx;
+  border-radius: 50%;
+  background-color: #f4f4f6;
+}
+
+.av-d {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60rpx;
+  font-weight: 600;
+  color: #6e6e73;
+}
+
+.av-tip {
+  margin-top: 16rpx;
+  font-size: 23rpx;
+  color: #8e8e93;
+}
+
+.card {
+  padding: 4rpx 28rpx;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #f0f0f2;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.lb {
+  width: 140rpx;
+  flex: none;
+  font-size: 29rpx;
+  color: #1d1d1f;
+}
+
+.inp {
+  flex: 1;
+  min-width: 0;
+  font-size: 29rpx;
+  color: #1d1d1f;
+}
+
+.ph {
+  color: #b0b0b6;
+}
+
+.val {
+  flex: 1;
+  font-size: 29rpx;
+  color: #8e8e93;
+}
+
+/* .btn 叠加全局 .liquid-btn */
+.btn {
+  margin-top: 56rpx;
+  height: 96rpx;
+  border-radius: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  letter-spacing: 4rpx;
+}
+
+.tip {
+  margin-top: 32rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #b0b0b6;
+}

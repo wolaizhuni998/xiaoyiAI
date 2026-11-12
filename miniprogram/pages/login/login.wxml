@@ -1,0 +1,25 @@
+<!-- 登录页：手机号 + 验证码 -->
+<nav-bar />
+<view class="page tone-{{tone}}">
+  <view class="hero dev d1">
+    <view class="h-t">校易AI</view>
+    <view class="h-s">手机号登录 · 方可发布与求购</view>
+  </view>
+
+  <view class="card liquid-card dev d2">
+    <view class="row">
+      <view class="lb">手机号</view>
+      <input class="inp" type="number" maxlength="11" placeholder="请输入 11 位手机号" placeholder-class="ph" value="{{phone}}" bindinput="onPhone" />
+    </view>
+    <view class="row">
+      <view class="lb">验证码</view>
+      <input class="inp" type="number" maxlength="6" placeholder="请输入验证码" placeholder-class="ph" value="{{code}}" bindinput="onCode" />
+      <view class="code {{counting > 0 ? 'dis' : ''}}" bindtap="sendCode">{{counting > 0 ? counting + 's' : '获取验证码'}}</view>
+    </view>
+  </view>
+
+  <view class="btn liquid-btn dev d3" bindtap="login">登 录</view>
+  <view class="tip">演示环境 · 任意 11 位手机号 + 任意验证码即可登录</view>
+</view>
+
+<view style="padding:32rpx;text-align:center;color:#666" bindtap="testLogin">演示模式：使用商品上架测试账号</view>

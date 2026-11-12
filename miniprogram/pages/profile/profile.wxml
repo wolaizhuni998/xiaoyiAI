@@ -1,0 +1,28 @@
+<!-- 个人资料：头像 + 昵称 -->
+<nav-bar />
+<view class="page tone-{{tone}}">
+  <view class="av-wrap dev d1" bindtap="chooseAvatar">
+    <image wx:if="{{avatar}}" class="av" src="{{avatar}}" mode="aspectFill" />
+    <view wx:else class="av av-d"><text>{{defaultCh}}</text></view>
+    <view class="av-tip">点击更换头像</view>
+  </view>
+
+  <view class="card liquid-card dev d2">
+    <view class="row">
+      <view class="lb">昵称</view>
+      <input class="inp" maxlength="12" placeholder="给自己起个昵称" placeholder-class="ph" value="{{nick}}" bindinput="onNick" />
+    </view>
+    <view class="row">
+      <view class="lb">手机号</view>
+      <view class="val">{{phone || '未登录'}}</view>
+    </view>
+    <view class="row">
+      <view class="lb">学校</view>
+      <picker range="{{schools}}" bindchange="onSchool"><view class="val">{{school || "请选择学校"}} ›</view></picker>
+    </view>
+  </view>
+
+  <view class="card liquid-card"><view class="row"><view class="lb">校区</view><picker range="{{campuses}}" bindchange="onCampus"><view class="val">{{campus || "请先选学校，再选校区"}} ›</view></picker></view></view>
+  <view class="btn liquid-btn dev d3" bindtap="save">保 存</view>
+  <view class="tip">演示环境 · 头像昵称仅保存在本机</view>
+</view>

@@ -1,0 +1,71 @@
+<!-- 商品详情：通栏图区 + 单列信息，无卡片边框 -->
+<nav-bar />
+<view wx:if="{{unavailable}}" style="padding:80rpx 32rpx;text-align:center">商品已下架、不存在或不属于当前校园集市，请返回集市重新选择。</view>
+<view wx:else class="page tone-{{tone}}">
+  <!-- 主视觉：有实拍图走轮播，无图走类目线条图标 -->
+  <view class="hero dev d1">
+    <swiper wx:if="{{photos.length}}" class="hero-swiper" indicator-dots="{{photos.length > 1}}" indicator-color="rgba(0,0,0,0.16)" indicator-active-color="#1d1d1f" circular="{{photos.length > 1}}">
+      <swiper-item wx:for="{{photos}}" wx:key="*this">
+        <image class="hero-img" src="{{item}}" mode="aspectFit" bindtap="previewPhoto" data-src="{{item}}" />
+      </swiper-item>
+    </swiper>
+    <view wx:else class="hero-empty">
+      <view class="ic hero-ic ic-{{k}}"></view>
+    </view>
+  </view>
+
+  <view class="body">
+    <!-- 价格与标题 -->
+    <view class="prow dev d2">
+      <text class="price">{{priceText}}</text>
+      <text class="nego">可议价</text>
+    </view>
+    <view class="title dev d2">{{item.title}}</view>
+    <view class="meta">{{item.school}} · {{item.campus}}</view>
+    <view class="meta dev d2">{{item.cat}} · {{item.cond}} · {{item.place}}</view>
+
+    <view class="hr dev d3"></view>
+
+    <!-- 卖家：一行，不堆卡片 -->
+    <view class="seller dev d3" bindtap="contact">
+      <view class="s-av">{{sellerCh}}</view>
+      <view class="s-main">
+        <view class="s-name">{{item.sellerName || "本校同学"}}</view>
+        <view class="s-sub">{{item.demo ? "演示商品" : "卖家信息 · 本地演示账号"}}</view>
+      </view>
+      <view class="chev"></view>
+    </view>
+
+    <view class="hr"></view>
+
+    <!-- 描述：小标题 + 正文，无边框 -->
+    <view class="sec dev d4">
+      <view class="t-h2">物品描述</view>
+      <view class="desc">{{desc}}</view>
+    </view>
+
+    <view class="sec" wx:if="{{item.aiReport.quality}}"><view class="t-h2">AI参考评分 {{item.aiReport.quality.score}} / 100</view><view class="desc">{{item.aiReport.quality.comment}}</view><view wx:for="{{item.aiReport.quality.factors}}" wx:key="*this">{{item}}</view><view class="place-note">{{item.aiReport.limitations}}</view></view>
+    <view class="sec" wx:if="{{item.completeness}}"><view class="t-h2">使用与完整度（卖家自述）</view><view>使用 {{item.usageMonths}} 个月</view><view class="desc">{{item.completeness}}</view></view>
+    <view class="sec dev d5">
+      <view class="t-h2">自提地点</view>
+      <view class="place">
+        <view class="ic place-ic ic-pin"></view>
+        <text class="place-t">{{item.place}}</text>
+      </view>
+      <view class="place-note">建议白天在宿舍大厅或图书馆前当面验货</view>
+    </view>
+
+    <view class="pad"></view>
+  </view>
+
+  <!-- 底部悬浮毛玻璃操作栏 -->
+  <view class="bar-wrap">
+    <view class="bar">
+      <view class="fav" bindtap="fav">
+        <view class="ic fav-ic ic-heart {{faved ? 'on' : ''}}"></view>
+        <text class="fav-t">{{faved ? "已收藏" : "收藏"}}</text>
+      </view>
+      <view class="contact-btn" bindtap="contact">联系卖家</view>
+    </view>
+  </view>
+</view>

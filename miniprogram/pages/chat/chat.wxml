@@ -1,0 +1,21 @@
+<!-- 聊天：单列消息流 + 底部悬浮输入栏 -->
+<nav-bar title="{{from}}" />
+<view class="page tone-{{tone}}">
+  <view class="body">
+    <view wx:if="{{goods}}" style="padding:24rpx;background:#f5f5f7;border-radius:20rpx">{{goods.title}} · {{goods.price}}<view>{{goods.campus}} · {{goods.place}}</view></view><view style="padding:16rpx;color:#888;font-size:24rpx">当前为演示对话，回复由规则生成，未发送给真实卖家。</view>
+    <view class="thread dev d1">
+      <view class="bub-row {{item.me ? 'me' : ''}}" wx:for="{{msgs}}" wx:key="index">
+        <view class="bub {{item.me ? 'mine' : 'theirs'}}">
+          <text class="bub-t">{{item.t}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="bar-wrap">
+      <view class="bar">
+        <input class="bar-in" placeholder="问问成色、自提地点" placeholder-style="color:#b0b0b6" value="{{kw}}" bindinput="onKw" confirm-type="send" bindconfirm="send" />
+        <view class="bar-send {{kw ? 'on' : ''}}" bindtap="send">发送</view>
+      </view>
+    </view>
+  </view>
+</view>

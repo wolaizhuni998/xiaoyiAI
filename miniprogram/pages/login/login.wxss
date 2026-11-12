@@ -1,0 +1,85 @@
+/* ===== 登录 · 手机号 + 验证码 ===== */
+.page {
+  min-height: 100vh;
+  padding: 40rpx 48rpx 0;
+  box-sizing: border-box;
+}
+
+.hero {
+  margin: 72rpx 0 56rpx;
+}
+
+.h-t {
+  font-size: 52rpx;
+  font-weight: 700;
+  letter-spacing: 1rpx;
+  color: #1d1d1f;
+}
+
+.h-s {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: #8e8e93;
+}
+
+.card {
+  padding: 4rpx 28rpx;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #f0f0f2;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.lb {
+  width: 140rpx;
+  flex: none;
+  font-size: 29rpx;
+  color: #1d1d1f;
+}
+
+.inp {
+  flex: 1;
+  min-width: 0;
+  font-size: 29rpx;
+  color: #1d1d1f;
+}
+
+.ph {
+  color: #b0b0b6;
+}
+
+.code {
+  flex: none;
+  font-size: 25rpx;
+  color: var(--tone, #007aff);
+}
+
+.code.dis {
+  color: #b0b0b6;
+}
+
+/* .btn 叠加全局 .liquid-btn，这里只管尺寸与排版 */
+.btn {
+  margin-top: 56rpx;
+  height: 96rpx;
+  border-radius: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  letter-spacing: 4rpx;
+}
+
+.tip {
+  margin-top: 32rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #b0b0b6;
+}

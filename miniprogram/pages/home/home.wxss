@@ -1,0 +1,245 @@
+/* ===== 首页 · 纯色底 + 白色列表卡 ===== */
+.page {
+  min-height: 100vh;
+  /* 底色由全局 tone-* 的 --bg 提供，这里不写死 */
+}
+
+.body {
+  padding: 8rpx 40rpx 0;
+}
+
+.pad {
+  height: 200rpx; /* 为底部悬浮导航栏留出空间 */
+}
+
+/* ---------- 大标题 ---------- */
+.hero {
+  display: flex;
+  flex-direction: column;
+  padding: 28rpx 0 30rpx;
+}
+
+.loc {
+  display: flex;
+  align-items: flex-start;
+}
+
+.loc:active {
+  opacity: 0.55;
+}
+
+.loc-t {
+  font-size: 52rpx;
+  font-weight: 700;
+  letter-spacing: -1rpx;
+  line-height: 1.2;
+  color: #1d1d1f;
+}
+
+.loc-arr {
+  width: 16rpx;
+  height: 16rpx;
+  margin-left: 14rpx;
+  margin-top: 14rpx;
+  border-right: 2rpx solid #c7c7cc;
+  border-bottom: 2rpx solid #c7c7cc;
+  transform: rotate(-45deg);
+  flex: none;
+}
+
+.hero-s {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #8e8e93;
+  letter-spacing: 1rpx;
+}
+
+/* ---------- 搜索 ---------- */
+/* 底部是纯色底，输入框用白色才浮得起来 */
+.sbar {
+  display: flex;
+  align-items: center;
+  height: 76rpx;
+  padding: 0 24rpx;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+}
+
+.s-ico {
+  flex: none;
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 12rpx;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%238E8E93" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7.5"/><line x1="20.5" y1="20.5" x2="16.4" y2="16.4"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.s-in {
+  flex: 1;
+  min-width: 0;
+  font-size: 27rpx;
+  color: #1d1d1f;
+}
+
+.s-clear {
+  flex: none;
+  margin-left: 12rpx;
+  font-size: 24rpx;
+  color: var(--tone, #007aff);
+}
+
+/* ---------- 类目 ---------- */
+.cbar {
+  margin-top: 34rpx;
+  white-space: nowrap;
+}
+
+.cbar-i {
+  display: inline-block;
+  padding-bottom: 12rpx;
+  margin-right: 46rpx;
+  font-size: 28rpx;
+  color: #6e6e73;
+  border-bottom: 4rpx solid transparent;
+}
+
+.cbar-i:last-child {
+  margin-right: 0;
+}
+
+.cbar-i.on {
+  color: #1d1d1f;
+  font-weight: 600;
+  border-bottom-color: #1d1d1f;
+}
+
+/* ---------- 排序行 ---------- */
+.tbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 26rpx;
+}
+
+.tbar-g {
+  display: flex;
+  align-items: center;
+  /* 抵消最后一项的 margin-right，保证右组与右边缘对齐 */
+  margin-right: -28rpx;
+}
+
+.tb {
+  margin-right: 28rpx;
+  font-size: 24rpx;
+  color: #8e8e93;
+}
+
+.tb.on {
+  color: #1d1d1f;
+  font-weight: 600;
+}
+
+/* ---------- 列表：独立卡片流 ----------
+   每行一张白卡、行间露底色。不能做成整块大白卡——
+   整块白滚过玻璃栏背后，模糊后还是均匀的白，毛玻璃就"看不见"了；
+   卡片间有缝隙，滚过顶栏/底栏时才有可被模糊的明暗节奏。 */
+.list {
+  margin-top: 18rpx;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  margin-bottom: 14rpx;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+}
+
+.row:last-child {
+  margin-bottom: 0;
+}
+
+.row:active {
+  opacity: 0.55;
+}
+
+.thumb {
+  flex: none;
+  width: 96rpx;
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f4f6;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.thumb-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ic {
+  width: 44rpx;
+  height: 44rpx;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.rmain {
+  flex: 1;
+  min-width: 0;
+  margin-left: 24rpx;
+}
+
+.rtitle {
+  font-size: 29rpx;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #1d1d1f;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.rmeta {
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  color: #8e8e93;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.nego {
+  flex: none;
+  margin-left: 20rpx;
+  font-size: 23rpx;
+  color: var(--tone, #007aff);
+}
+
+/* ---------- 空态 ---------- */
+.empty {
+  padding: 140rpx 0;
+  text-align: center;
+  font-size: 26rpx;
+  color: #8e8e93;
+}
+
+.market-banner{margin:24rpx 0;padding:28rpx;border-radius:24rpx;background:var(--bg);display:flex;flex-direction:column;gap:12rpx;color:#666;font-size:24rpx}.market-title{font-size:38rpx;font-weight:600;color:var(--tone)}.market-note{font-size:20rpx;color:#888}.market-price{display:block;color:var(--tone);font-size:32rpx;font-weight:600}
+
+.market-filters{display:flex;align-items:center;gap:16rpx;padding:20rpx 0;font-size:24rpx;color:#666}.market-filters input{width:140rpx;background:#f5f5f7;border-radius:12rpx;padding:12rpx}.market-filters picker{margin-left:auto}
+
+/* 舒适阅读与紧凑信息层级 */
+.body{padding:12rpx 32rpx 0}.hero{padding:32rpx 4rpx 16rpx}.loc-t{font-size:44rpx;line-height:1.35}.hero-s{color:#737b87;line-height:1.6;letter-spacing:0}
+.market-banner{margin:16rpx 0 24rpx;padding:28rpx 30rpx;background:#fff;border:1rpx solid rgba(30,50,70,.04);border-radius:28rpx;gap:8rpx}.market-title{font-size:34rpx}.market-note{font-size:22rpx;color:#737b87;line-height:1.5}
+.sbar{height:88rpx;border-radius:24rpx;border:1rpx solid rgba(30,50,70,.05)}.cbar{margin-top:28rpx}.cbar-i{margin-right:30rpx;padding:12rpx 0 16rpx;font-size:26rpx}.cbar-i.on{color:var(--tone);border-bottom-color:var(--tone)}
+.tbar{margin-top:20rpx;flex-wrap:wrap;gap:12rpx}.tb{padding:12rpx 0;color:#737b87}.market-filters{gap:12rpx;flex-wrap:wrap;padding:16rpx 0}.market-filters input{width:130rpx;background:#fff;min-height:52rpx;padding:10rpx 16rpx}.market-filters picker{padding:16rpx 4rpx;color:#58616e}
+.row{padding:24rpx 20rpx;border-radius:26rpx;margin-bottom:18rpx;align-items:flex-start;border:1rpx solid rgba(30,50,70,.035)}.thumb{width:136rpx;height:152rpx;border-radius:18rpx}.rmain{margin-left:20rpx}.rtitle{font-size:28rpx;line-height:1.5;font-weight:600}.rmeta{font-size:22rpx;line-height:1.6;white-space:normal;color:#737b87}.market-price{font-size:30rpx;white-space:nowrap}.nego{display:block;margin:8rpx 0 0;font-size:21rpx;color:#737b87}.score-preview{margin-top:8rpx;font-size:22rpx;line-height:1.5;color:var(--tone);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}.empty{margin-top:24rpx;padding:72rpx 32rpx;background:rgba(255,255,255,.7);border-radius:28rpx;line-height:1.8;color:#737b87}

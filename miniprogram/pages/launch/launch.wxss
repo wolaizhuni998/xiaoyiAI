@@ -1,0 +1,37 @@
+/* 启动页 · 白底字标，1.2s 自动进首页 */
+.launch {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 14vh; /* 视觉重心略高于正中 */
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+.mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: markIn 0.5s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+.mark-t {
+  font-size: 88rpx;
+  font-weight: 700;
+  letter-spacing: 6rpx;
+  line-height: 1.1;
+  color: #1d1d1f;
+}
+
+.mark-s {
+  margin-top: 20rpx;
+  font-size: 23rpx;
+  letter-spacing: 4rpx;
+  color: #8e8e93;
+}
+
+@keyframes markIn {
+  0% { opacity: 0; transform: translateY(12rpx); }
+  100% { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,61 @@
+<!-- 首页 · 白底灰阶单列列表 -->
+<nav-bar />
+<view class="page tone-{{tone}}">
+  <view class="body">
+    <!-- 大标题：校名 + 定位 -->
+    <view class="hero dev d1">
+      <view class="loc" bindtap="pickLoc">
+        <text class="loc-t">{{loc}}</text>
+        <view class="loc-arr"></view>
+      </view>
+      <text class="hero-s">{{campus}} · 当面交易</text>
+    </view>
+
+    <!-- 类目：文字 tab + 下划线 -->
+    <scroll-view class="cbar dev d3" scroll-x="{{true}}" show-scrollbar="{{false}}">
+      <view class="cbar-i {{cat === '' ? 'on' : ''}}" data-l="" bindtap="pickCat">全部</view>
+      <view class="cbar-i {{cat === item.label ? 'on' : ''}}" wx:for="{{cats}}" wx:key="label" data-l="{{item.label}}" bindtap="pickCat">{{item.label}}</view>
+    </scroll-view>
+
+    <!-- 排序：两组纯文字，无底色 -->
+    <view class="tbar dev d4">
+      <view class="tbar-g">
+        <text class="tb {{subTab === '热门推荐' ? 'on' : ''}}" data-t="热门推荐" bindtap="pickSub">最热</text>
+        <text class="tb {{subTab === '最新发布' ? 'on' : ''}}" data-t="最新发布" bindtap="pickSub">最新</text>
+      </view>
+      <view class="tbar-g">
+        <text class="tb {{tag === item ? 'on' : ''}}" wx:for="{{tags}}" wx:key="*this" data-t="{{item}}" bindtap="pickTag">{{item}}</text>
+      </view>
+    </view>
+
+    <view class="market-filters"><input type="digit" placeholder="最低价" value="{{minPrice}}" data-k="minPrice" bindinput="onPrice" /><text>—</text><input type="digit" placeholder="最高价" value="{{maxPrice}}" data-k="maxPrice" bindinput="onPrice" /><picker range="{{conditions}}" bindchange="onCondition">{{condition || "全部成色"}} ▾</picker></view>
+    <view class="market-banner"><text class="market-title">校园集市</text><text>同校闲置，就近遇见</text><text class="market-note">演示模式 · 学校选择不代表身份认证</text></view>
+    <!-- 搜索：iOS 灰底圆角输入框，回车即搜 -->
+    <view class="sbar dev d2">
+      <view class="s-ico"></view>
+      <input class="s-in" placeholder="搜索教材、数码、日用品" placeholder-style="color:#9b9ba1" value="{{kw}}" bindinput="onKw" bindconfirm="doSearch" confirm-type="search" />
+      <text class="s-clear" wx:if="{{searched}}" bindtap="clearSearch">清除</text>
+    </view>
+
+    <!-- 列表：单列，左缩略图 + 标题 + 元信息 + 可议价 -->
+    <view class="list dev d5">
+      <view class="row" wx:for="{{list}}" wx:key="id" data-d="{{item}}" bindtap="openItem">
+        <view class="thumb">
+          <image wx:if="{{item.photos && item.photos.length}}" class="thumb-img" src="{{item.photos[0]}}" mode="aspectFill" />
+          <view wx:else class="ic ic-{{item.k}}"></view>
+        </view>
+        <view class="rmain">
+          <view class="rtitle">{{item.title}}</view>
+          <view wx:if="{{item.aiReport.quality}}" class="score-preview">AI参考评分 {{item.aiReport.quality.score}} / 100 · {{item.aiReport.quality.comment}}</view>
+          <view class="rmeta">{{item.cat}} · {{item.cond}} · {{item.place}}</view>
+        </view>
+        <view><text class="market-price">{{item.price === "面议" ? "面议" : "¥" + item.priceText}}</text><text class="nego">可议价</text></view>
+      </view>
+    </view>
+
+    <view class="empty" wx:if="{{!list.length}}">当前集市暂无相关闲置，试试切换筛选或发布第一件物品</view>
+    <view class="pad"></view>
+  </view>
+
+  <ink-tabbar id="tabs" active="home" bind:go="onTab" />
+</view>

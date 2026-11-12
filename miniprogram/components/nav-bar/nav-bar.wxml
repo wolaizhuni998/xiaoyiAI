@@ -1,0 +1,12 @@
+<!-- 占位：撑开文档流，页面内容不用自己加 padding-top -->
+<view class="nav-ph" style="height: {{h}}px"></view>
+
+<!-- 悬浮毛玻璃顶栏：内容从它下方穿过时被模糊 -->
+<view class="nav" style="height: {{h}}px; padding-top: {{sbh}}px">
+  <view class="nav-row">
+    <view wx:if="{{canBack}}" class="nav-back" bindtap="onBack" hover-class="nav-back-hv">
+      <view class="nav-chev"></view>
+    </view>
+    <view wx:if="{{title}}" class="nav-title">{{title}}</view>
+  </view>
+</view>

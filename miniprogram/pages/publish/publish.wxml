@@ -1,0 +1,97 @@
+<!-- 发布闲置：分组列表表单 + 照片 + 拍照填表入口 -->
+<nav-bar />
+<view class="market-entry" bindtap="pickMarket">发布至：{{marketLabel}} ›</view>
+<view class="page tone-{{tone}}">
+  <view class="body">
+    <view class="head dev d1">
+      <view class="t-h1">{{editLabel || "发布闲置"}}</view>
+      <view class="head-s">校内点对点流转 · 当面自提更安心</view>
+    </view>
+
+    <!-- 表单：不套卡片边框，靠行间细线分组 -->
+    <view class="form dev d2">
+      <view class="row">
+        <text class="label">物品名称</text>
+        <input class="input" placeholder="例如：高等数学教材 第七版" placeholder-class="ph" value="{{form.title}}" data-k="title" bindinput="onField" />
+      </view>
+
+      <view class="row">
+        <text class="label">类目</text>
+        <picker class="pk" range="{{cats}}" bindchange="onCat">
+          <view class="pick {{form.cat ? '' : 'is-ph'}}">
+            <text>{{form.cat || '选择类目'}}</text>
+            <view class="chev"></view>
+          </view>
+        </picker>
+      </view>
+
+      <view class="row">
+        <text class="label">成色</text>
+        <picker class="pk" range="{{conds}}" bindchange="onCond">
+          <view class="pick {{form.cond ? '' : 'is-ph'}}">
+            <text>{{form.cond || '选择成色'}}</text>
+            <view class="chev"></view>
+          </view>
+        </picker>
+      </view>
+
+      <view class="row">
+        <text class="label">自提地点</text>
+        <picker class="pk" range="{{places}}" bindchange="onPlace">
+          <view class="pick {{form.place ? '' : 'is-ph'}}">
+            <text>{{form.place || '选择推荐自提点'}}</text>
+            <view class="chev"></view>
+          </view>
+        </picker>
+      </view>
+
+      <view class="row"><text class="label">价格面议</text><switch checked="{{form.price === '面议'}}" bindchange="onNegotiable" /><text style="font-size:24rpx;color:#737b87;margin-left:12rpx">与买家协商价格</text></view>
+      <view class="row last">
+        <text class="label">转让价格</text><text wx:if="{{form.price === '面议'}}">面议</text>
+        <view class="price-wrap" wx:if="{{form.price !== '面议'}}">
+          <text class="cny">¥</text>
+          <input class="input price-in" type="digit" placeholder="0.00" placeholder-class="ph" value="{{form.price}}" data-k="price" bindinput="onField" />
+        </view>
+      </view>
+    </view>
+
+    <view class="block"><view class="block-t">物品详细信息（必填）</view><textarea style="width:100%;padding:20rpx 0" maxlength="1000" placeholder="请详细填写：品牌型号、使用时间、功能状态、配件及已知瑕疵（必填）" value="{{form.desc}}" data-k="desc" bindinput="onField" /></view>
+    <view class="form"><view class="row"><text class="label">已使用月数</text><input class="input" type="digit" placeholder="全新填0" value="{{form.usageMonths}}" data-k="usageMonths" bindinput="onField" /></view><view class="row"><text class="label">完整度与配件</text><input class="input" maxlength="200" placeholder="说明缺件、配件和包装情况" value="{{form.completeness}}" data-k="completeness" bindinput="onField" /></view></view>
+    <view class="publish-hint">请上传当前实物完整全貌，以及背面、配件、瑕疵等细节。禁止AI生成图、广告图或盗用图片；疑似非实拍或展示不完整的商品不予通过，需补图或人工复核。</view>
+    <!-- 物品照片：最多 6 张，首页卡片与详情轮播展示 -->
+    <view class="block dev d3">
+      <view class="block-head">
+        <text class="block-t">物品照片</text>
+        <text class="count">{{photos.length}} / 6</text>
+      </view>
+      <view class="grid">
+        <view class="ph-item" wx:for="{{photos}}" wx:key="*this">
+          <image class="ph-img" src="{{item}}" mode="aspectFill" bindtap="previewPhoto" data-src="{{item}}" />
+          <view class="ph-del" catchtap="removePhoto" data-i="{{index}}"><view class="ic ph-del-ic ic-close"></view></view>
+        </view>
+        <view class="ph-add" wx:if="{{photos.length < 6}}" bindtap="addPhoto">
+          <view class="ic ph-add-ic ic-plus"></view>
+          <text class="ph-add-t">添加</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 拍照填表：一行文字入口（选图后自动识别类目/成色/参考价，识别结果可改） -->
+    <view class="ai dev d4" bindtap="aiFill">
+      <view class="ai-main">
+        <view class="ai-t">AI 审核与参考定价</view>
+        <view class="ai-d">{{assessment ? '初审完成 · 参考 ¥' + assessment.pricing.low + '–' + assessment.pricing.high : '分析图片与描述，检查风险并提供参考估价'}}</view>
+      </view>
+      <text class="ai-act">{{aiBusy ? '识别中' : (assessment ? '重新审核' : '开始审核')}}</text>
+    </view>
+
+    <view style="color:#888;font-size:24rpx;padding:20rpx 0">提交后进入审核，通过后才在所属校区展示。当前为本地演示审核。</view><view class="manage-entry" bindtap="myListings">查看我的发布与审核状态 ›</view>
+    <view class="acts dev d5">
+      <view class="btn-pri {{aiBusy ? 'busy' : ''}}" bindtap="submit">{{submitting ? "提交中…" : "发布"}}</view>
+      <view class="btn-txt" bindtap="cancel">取消</view>
+    </view>
+    <view class="pad"></view>
+  </view>
+
+  <ink-tabbar active="publish" bind:go="onTab" />
+</view>
